@@ -1,0 +1,62 @@
+name: RSS to Markdown
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  convert_feeds:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # - name: Medium
+      #   uses: keiranlovett/rss-feed-to-markdown@main
+      #   with:
+      #     feed_url: 'https://USERNAME.medium.com/feed'
+      #     template_file: '.vitepress/templates/medium.md'
+      #     output_dir: 'posts'
+
+      # - name: Dev.to
+      #   uses: keiranlovett/rss-feed-to-markdown@main
+      #   with:
+      #     feed_url: 'https://dev.to/feed/USERNAME'
+      #     template_file: '.vitepress/templates/devto.md'
+      #     output_dir: 'posts'
+
+      # - name: Youtube
+      #   uses: keiranlovett/rss-feed-to-markdown@main
+      #   with:
+      #     feed_url: 'https://www.youtube.com/feeds/videos.xml?channel_id=CHANNEL_ID'
+      #     template_file: '.vitepress/templates/youtube.md'
+      #     output_dir: 'videos'
+
+      # - name: Twitter
+      #   uses: keiranlovett/rss-feed-to-markdown@main
+      #   with:
+      #     feed_url: 'https://news.google.com/rss/search?q=site:twitter.com/USERNAME+when:7d&hl=en-CA&gl=CA&ceid=CA:en'
+      #     template_file: '.vitepress/templates/twitter.md'
+      #     output_dir: 'tweets'
+
+      - name: Commit and Push Changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          branch: main
+          add_options: '--all'
+          file_pattern: '**/*.md'
+          commit_options: "--no-verify"
+          commit_message: "RSS to markdown"
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "github-actions[bot]@users.noreply.github.com"
