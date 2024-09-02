@@ -128,3 +128,13 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# vite
+.vitepress/dist
+.vitepress/cache
+
+# VSCode
+*.code-workspace
+
+# mac
+.ds_store

@@ -1,1 +1,2 @@
-# vitepress-bootstrap
+# Vitepress Bootstrap
+Starter project
