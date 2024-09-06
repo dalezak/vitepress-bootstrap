@@ -1,0 +1,19 @@
+table {
+  &.table-responsive {
+    min-width: 100%;
+  }
+  tr {
+    th {
+      font-size: 15px;
+    }
+    td {
+      font-size: 13px;
+    }
+  }
+  thead {
+    min-width: 100%;
+  }
+  tbody {
+    min-width: 100%;
+  }
+}

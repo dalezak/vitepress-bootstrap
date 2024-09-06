@@ -1,0 +1,48 @@
+$primary: #333333;
+$secondary: #888888;
+$success: #BBBBBB;
+$danger: #C0392B;
+$warning: #F4D03F;
+$info: #7FB3D5;
+$light: #E5E8E8;
+$dark: #888888;
+$hover: #E65B1F;
+
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "font-size": map-merge(
+      map-get($utilities, "font-size"),
+      ( responsive: true )
+    ),
+    "border": map-merge(
+      map-get($utilities, "border"),
+      ( responsive: true ),
+    ),
+    "border-top": map-merge(
+      map-get($utilities, "border-top"),
+      ( responsive: true ),
+    ),
+    "border-end": map-merge(
+      map-get($utilities, "border-end"),
+      ( responsive: true ),
+    ),
+    "border-bottom": map-merge(
+      map-get($utilities, "border-bottom"),
+      ( responsive: true ),
+    ),
+    "border-start": map-merge(
+      map-get($utilities, "border-start"),
+      ( responsive: true ),
+    )
+  )
+);
+
+@import "bootstrap/scss/utilities/api";
+@import 'bootstrap/scss/bootstrap';
