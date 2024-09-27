@@ -2,11 +2,10 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "Vitepress Bootstrap",
-  description: "Vitepress Bootstrap Starter Project",
+  title: "Vitepress",
+  description: "Vitepress Bootstrap Starter",
   themeConfig: {
     nav: [
-      { name: "Home", url: "/", icon: "bi-house" },
       { name: "Projects", url: "/projects/", icon: "bi-code-square" },
       { name: "Posts", url: "/posts/", icon: "bi-chat-left-text" },
     ],

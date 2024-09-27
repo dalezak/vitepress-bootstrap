@@ -1,9 +1,13 @@
-<script setup>
-import { useData } from 'vitepress'
-
-const { site, frontmatter } = useData()
-</script>
-
 <template>
-  <Content />
+  <div>
+    <nav-bar />
+    <div class="container">
+      <page-bar />
+      <Content />  
+    </div>
+  </div>
 </template>
+
+<script setup>
+
+</script>

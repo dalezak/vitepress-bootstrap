@@ -2,10 +2,10 @@
   <div class="card mb-4">
     <template v-if="image && image.length > 0">
       <a :href="url" :title="title" target="_blank" v-if="url && url.length > 0 && url.startsWith('http')">
-        <lazy-image :src="image" class="card-img-top" alt="image"/>
+        <img :src="image" class="card-img-top" alt="image"/>
       </a>
       <a :href="url" :title="title" v-else-if="url && url.length > 0">
-        <lazy-image :src="image" class="card-img-top" alt="image"/>
+        <img :src="image" class="card-img-top" alt="image"/>
       </a>
       <img :src="image" class="card-img-top" alt="image" v-else>
     </template>

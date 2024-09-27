@@ -1,9 +1,9 @@
 <template>
   <div class="cards row">
     <div class="col" :class="columnClasses" :key="'col-' + column" v-for="(_, column) in state.columns">
-      <card :title="card.title" :date="card.date" :tags="card.keywords" :image="image ? card.image : null" :url="link ? card.url : null" :link="card.link" :key="'card-'+index" v-for="(card, index) in columnCards[column]">
-        {{ card.description }}
-      </card>
+      <template v-for="(card) in columnCards[column]">
+        <slot name="card" :card="card" />
+      </template>
     </div>
   </div>
   <div class="d-grid my-4" v-if="props.more && state.loading == false && cardsTotal > cardsCount">
@@ -29,18 +29,6 @@ const props = defineProps({
     type: Boolean,
     default: false
   },
-  client: {
-    type: String,
-    default: ""
-  },
-  image: {
-    type: Boolean,
-    default: false
-  },
-  link: {
-    type: Boolean,
-    default: true
-  },
   width: {
     type: Number,
     default: 400
@@ -56,8 +44,8 @@ const params = new URLSearchParams(query);
 const state = reactive({
   offset: 0,
   columns: 0,
-  search: params.get('search') || "",
-  loading: true
+  loading: true,
+  search: params.get('search') || ""
 });
 
 const cardsFiltered = computed(() => {
@@ -67,12 +55,6 @@ const cardsFiltered = computed(() => {
         (card.description && card.description.length > 0 && card.description.toLowerCase().includes(state.search.toLowerCase())) || 
         (card.keywords && card.keywords.length > 0 && card.keywords.includes(state.search));
     });
-    if (props.client && props.client.length > 0) {
-      return filtered.filter((card) => {
-        return (card.client && card.client.length > 0 && card.client.toLowerCase().includes(props.client.toLowerCase())) ||
-          (card.keywords && card.keywords.length > 0 && card.keywords.includes(props.client.toLowerCase()));
-      });
-    }
     return filtered;
   }
   return [];

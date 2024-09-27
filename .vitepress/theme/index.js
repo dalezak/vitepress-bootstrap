@@ -7,7 +7,7 @@ import Layout from '../components/Layout.vue'
 /** @type {import('vitepress').Theme} */
 export default {
   Layout,
-  enhanceApp({ app, router, siteData }) {
+  enhanceApp({ app }) {
     app.component('v-lazy-image', VLazyImage);
     
     const components = import.meta.glob('../components/*.vue', { eager: true });

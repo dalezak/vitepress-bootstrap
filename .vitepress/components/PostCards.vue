@@ -1,5 +1,11 @@
 <template>
-  <grid-cards :limit="limit" :more="more" :width="width" :columns="columns" :client="client" :cards="posts"></grid-cards>
+  <grid-cards :limit="limit" :more="more" :width="width" :columns="columns" :cards="posts">
+    <template #card="{ card }">
+      <card :title="card.title" :date="card.date" :tags="card.keywords" :image="card.image" :url="card.url" :link="card.link">
+        {{ card.description }}
+      </card>
+    </template>
+  </grid-cards>
 </template>
 
 <script setup>
@@ -10,10 +16,6 @@ const props = defineProps({
     type: Number,
     default: 12
   },
-  more: {
-    type: Boolean,
-    default: true
-  },
   width: {
     type: Number,
     default: 400
@@ -22,9 +24,9 @@ const props = defineProps({
     type: Number,
     default: 4
   },
-  client: {
-    type: String,
-    default: ""
+  more: {
+    type: Boolean,
+    default: true
   }
 })
 </script>
