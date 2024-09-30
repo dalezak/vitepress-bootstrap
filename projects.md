@@ -1,4 +1,5 @@
 ---
+path: projects
 title: Projects
 description: Some of my past projects
 search: Search...

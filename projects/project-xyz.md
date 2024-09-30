@@ -4,7 +4,8 @@ id: project-xyz
 title: Project XYZ
 year: 2024
 keywords: project,xyz
-link: https://www.project-xyz.com
+link: https://vitepress.dev
+links: https://vuejs.org
 image: 
 images: 
 description: >

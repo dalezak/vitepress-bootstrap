@@ -14,13 +14,8 @@
           </a>
         </li>
       </ul>
-      <div class="d-flex" v-if="placeholder">
-        <div class="input-group ms-auto">
-          <input type="text" name="search" v-model="state.search" :placeholder="placeholder" class="form-control" aria-label="Search" aria-describedby="input-search" @input="onSearch">
-          <button type="button" id="input-search" class="btn btn-outline-secondary" title="Search" @click="onSearch">
-            <i class="bi bi-search"></i>
-          </button>
-        </div>
+      <div class="d-flex" v-if="props.search">
+        <search-bar :placeholder="props.search" />
       </div>
     </div>
   </div>
@@ -28,42 +23,24 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue';
 import { useData, useRoute } from 'vitepress'
-import eventBus from '../events/bus.js';
 
-const { site, frontmatter } = useData()
+const { site } = useData()
 const route = useRoute()
+
+const props = defineProps({
+  search: {
+    type: String,
+    default: null
+  }
+});
 
 const title = site.value.title;
 const links = site.value.themeConfig.nav || [];
-const placeholder = frontmatter.value.search || false;
-
-const query = window !== undefined ? window.location.search : "";
-const params = new URLSearchParams(query);
-
-const state = reactive({
-  search: params.get('search') || "",
-})
 
 const isActive = (link) => {
   const path = link.url.replace(/\/+$/, '');
   return route.path.startsWith(path);
-}
-
-const emitSearch = () => {
-  eventBus.emit('search', state.search);
-}
-
-const updateHistory = () => {
-  if (history && history.replaceState) {
-    history.replaceState(null, null, `?search=${state.search}`);
-  }
-}
-
-const onSearch = () => {
-  emitSearch();
-  updateHistory();
 }
 
 const onMenu = () => {

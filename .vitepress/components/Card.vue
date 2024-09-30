@@ -28,8 +28,8 @@
       <p class="card-text">
         <slot></slot>
       </p>
-      <div v-if="tags && tags.length > 0">
-        <span class="badge badge-light me-1" v-for="tag in tags.split(',')" :key="tag">{{ tag }}</span>
+      <div v-if="keywords && keywords.length > 0">
+        <badge :text="keyword" :key="keyword" v-for="keyword in keywords.split(',')"/>
       </div>
     </div>
   </div>
@@ -50,7 +50,7 @@ const props = defineProps({
   url: {
     type: String
   },
-  tags: {
+  keywords: {
     type: String
   },
   image: {

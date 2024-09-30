@@ -51,9 +51,12 @@ const state = reactive({
 const cardsFiltered = computed(() => {
   if (props.cards && props.cards.length > 0) {
     let filtered = props.cards.filter((card) => {
-      return (card.title && card.title.length > 0 && card.title.toLowerCase().includes(state.search.toLowerCase())) || 
-        (card.description && card.description.length > 0 && card.description.toLowerCase().includes(state.search.toLowerCase())) || 
-        (card.keywords && card.keywords.length > 0 && card.keywords.includes(state.search));
+      return (typeof card == "string") || 
+        (
+          (card.title && card.title.length > 0 && card.title.toLowerCase().includes(state.search.toLowerCase())) || 
+          (card.description && card.description.length > 0 && card.description.toLowerCase().includes(state.search.toLowerCase())) || 
+          (card.keywords && card.keywords.length > 0 && card.keywords.includes(state.search))
+        );
     });
     return filtered;
   }
@@ -61,19 +64,24 @@ const cardsFiltered = computed(() => {
 });
 
 const cardsTotal = computed(() => {
-  return cardsFiltered.value ? cardsFiltered.value.length : 0;
+  return cardsFiltered.value?.length || 0
 });
 
 const cardsSliced = computed(() => {
-  return cardsFiltered.value ? cardsFiltered.value.slice(0, state.offset + props.limit) : [];
+  if (!cardsFiltered.value) return [];
+  return cardsFiltered.value.slice(0, state.offset + props.limit);
 });
 
 const cardsCount = computed(() => {
-  return cardsSliced.value.length;
-})
+  return cardsSliced.value?.length || 0;
+});
 
 const columnCards = computed(() => {
-  return cardsSliced.value ? [...Array(state.columns).keys()].map(column => cardsSliced.value.filter((_, index) => index % state.columns === column)) : [];
+  if (!cardsSliced.value) return [];
+  
+  return Array.from({ length: state.columns }, (_, column) => 
+    cardsSliced.value.filter((_, index) => index % state.columns === column)
+  );
 });
 
 const columnClasses = computed(() => {
