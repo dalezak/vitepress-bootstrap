@@ -1,0 +1,17 @@
+.card {
+  @if variable-exists(card-bg) {
+    background-color: $card-bg;
+  }
+  @if variable-exists(card-border-color) {
+    border-color: $card-border-color;
+  }
+}
+
+[data-bs-theme=dark] .card {
+  @if variable-exists(card-dark-bg) {
+    background-color: $card-dark-bg;
+  }
+  @if variable-exists(card-dark-border-color) {
+    border-color: $card-dark-border-color;
+  }
+}

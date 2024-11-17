@@ -1,0 +1,42 @@
+.navbar {
+  border-style: solid;
+  @if variable-exists(navbar-bg) {
+    background-color: $navbar-bg;
+  }
+  @else {
+    background-color: var(--bs-navbar-bg);
+  }
+  @if variable-exists(navbar-border-width) {
+    border-width: $navbar-border-width;
+  }
+  @else {
+    border-width: var(--bs-border-width);
+  }
+  @if variable-exists(navbar-border-color) {
+    border-color: $navbar-border-color;
+  }
+  @else {
+    border-color: var(--bs-border-color-translucent);
+  }
+  @if variable-exists(navbar-border-radius) {
+    border-radius: $navbar-border-radius;
+  }
+  @else {
+    border-radius: var(--bs-border-radius);
+  }
+}
+
+[data-bs-theme=dark] .navbar {
+  @if variable-exists(navbar-dark-bg) {
+    background-color: $navbar-dark-bg;
+  }
+  @else {
+    border-color: var(--bs-border-color-translucent);
+  }
+  @if variable-exists(navbar-dark-color) {
+    color: $navbar-dark-color;
+  }
+  @else {
+    color: var(--bs-dark);
+  }
+}

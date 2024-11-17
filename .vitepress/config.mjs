@@ -1,19 +1,53 @@
 import { defineConfig } from 'vitepress'
 
+import feedGenerator from './utils/feed-generator.js';
+import headTransformer from './utils/head-transformer.js';
+import themeVariables from './utils/theme-variables.js';
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  cleanUrls: true,
   title: "Vitepress",
-  description: "Vitepress Bootstrap Starter",
+  description: "Vitepress Bootstrap Theme",
   themeConfig: {
-    nav: [
-      { name: "Projects", url: "/projects/", icon: "bi-code-square" },
-      { name: "Posts", url: "/posts/", icon: "bi-chat-left-text" },
+    layoyt: 'default', // default, sidebar, topbar
+    theme: 'light', // light, dark
+    font: 'Roboto', // Open Sans, Roboto, Lato, Ubuntu, Droid Sans, Merriweather, Inconsolata, Oswald, Raleway, Source Sans Pro, Montserrat, Poppins, Playfair Display, Nunito, Quicksand, Pacifico, Lobster, Lora, Merriweather Sans, Roboto Condensed, Roboto Slab, Ubuntu Mono, Vollkorn, Work Sans, Yantramanav, Zilla Slab, Zilla Slab Highlight
+    navbar: 'top', // top, fixed-top, fixed-bottom, sticky-top, sticky-bottom
+    container: 'container', // container, container-fluid
+    search: 'visible', // hidden, visible
+    breadcrumbs: 'visible', // hidden, visible
+    variables: { // https://github.com/twbs/bootstrap/blob/main/scss/_variables.scss
+      'primary': '#dc3545',
+      'secondary': '#6c757d',
+      'success': '#198754',
+      'danger': '#dc3545',
+      'warning': '#ffc107',
+      'info': '#0dcaf0',
+      'light': '#f8f9fa',
+      'dark': '#212529',
+      'hover': '#0d6efd',
+      'body-bg': '#fff',
+      'body-color': '#212529',
+      'navbar-bg': '#fafafa',
+      'navbar-color': '#212529',
+      'navbar-border-color': '#e9ecef',
+      'navbar-dark-bg': '#212529',
+      'navbar-dark-color': '#fff',
+      'navbar-dark-border-color': '#343a40',
+      'card-bg': '#fafafa',
+      'card-border-color': '#e6e6e6',
+      'card-dark-bg': '#212529',
+      'card-dark-border-color': '#343a40',
+    },
+    links: [
+      { name: "Features", url: "/features", icon: "bi-check-square" },
+      { name: "Code", url: "https://github.com/dalezak/vitepress-bootstrap", icon: "bi-code-square" }
     ],
     feeds: [
-      { name: "projects", path: "./loaders/projects.data.js" },
-      { name: "posts", path: "./loaders/posts.data.js" },
+      { name: "features", path: "./loaders/features.data.js" }
     ],
-    links: [
+    networks: [
       { name: 'GitHub', url: 'https://github.com', icon: 'github' },
       { name: 'LinkedIn', url: 'https://www.linkedin.com', icon: 'linkedin' },
       { name: 'Twitter',  url: 'https://twitter.com', icon: 'twitter' },
@@ -22,30 +56,23 @@ export default defineConfig({
       { name: 'Instagram', url: 'https://www.instagram.com', icon: 'instagram' }
     ]
   },
-  transformHead: ({ pageData }) => {
-    const head = [];
+  transformHead: ({ siteConfig, pageData }) => {
+    const themeConfig = siteConfig.userConfig.themeConfig;
     const frontmatter = pageData.frontmatter;
-    if (frontmatter.title && frontmatter.title.length > 0) {
-      head.push(['meta', { property: 'og:title', content: frontmatter.title }])
-    }
-    if (frontmatter.description && frontmatter.description.length > 0) {
-      head.push(['meta', { name: 'description', content: frontmatter.description }])
-      head.push(['meta', { property: 'og:description', content: frontmatter.description }])
-    }
-    if (frontmatter.image && frontmatter.image.length > 0) {
-      head.push(['meta', { property: 'og:image', content: frontmatter.image }])
-    }
-    if (frontmatter.keywords && frontmatter.keywords.length > 0) { 
-      head.push(['meta', { name: 'keywords', content: frontmatter.keywords }])
-    }
-    return head;
+    return headTransformer(themeConfig, frontmatter);
   },
-  buildEnd: async (config) => {
-    if (config.userConfig.themeConfig.feeds === undefined) return;
-
-    config.userConfig.themeConfig.feeds.forEach(async (feed) => {
-      const data = await (await import(feed.path)).default.load();
-      await feedGenerator(config, feed.name, data);
-    });
+  async transformHtml(code, id, context) {
+    const siteConfig = context.siteConfig;
+    const themeConfig = siteConfig.userConfig.themeConfig;
+    await themeVariables(id, siteConfig.themeDir, themeConfig.variables);
+  },
+  buildEnd: async (siteConfig) => {
+    const themeConfig = siteConfig.userConfig.themeConfig;
+    if (themeConfig.feeds) {
+      themeConfig.feeds.forEach(async (feed) => {
+        const data = await (await import(feed.path)).default.load();
+        await feedGenerator(siteConfig, feed.name, data);
+      });
+    }
   }
 })

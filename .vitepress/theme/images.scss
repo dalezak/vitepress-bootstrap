@@ -1,0 +1,50 @@
+.v-lazy-image {
+  filter: blur(10px);
+  transition: filter 0.7s;
+}
+.v-lazy-image-loaded {
+  filter: blur(0);
+}
+
+.img {
+  margin: 0 auto;
+  max-width: 100%;
+  &.img-thumbnail {
+    border: none;
+  }
+  &.img-round {
+    border-radius: 50%;
+  }
+  &.img-rounded {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+  }
+  &.img-full {
+    width: 100% !important;
+  }
+  &.img-half {
+    width: 50% !important;
+  }
+  &.img-20 {
+    width: 20px !important;
+  }
+  &.img-30 {
+    width: 30px !important;
+  }
+  &.img-40 {
+    width: 40px !important;
+  }
+  &.img-50 {
+    width: 50px !important;
+  }
+  &.img-100 {
+    width: 100px !important;
+  }
+  &.img-150 {
+    width: 150px !important;
+  }
+  &.img-200 {
+    width: 200px !important;
+  }
+}
