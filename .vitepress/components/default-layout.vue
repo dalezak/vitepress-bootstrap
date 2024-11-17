@@ -26,12 +26,8 @@ const { site, frontmatter } = useData();
 
 const themeConfig = site.value.themeConfig || {};
 const container = themeConfig.container || '';
-
 const id = computed(() => formatString(frontmatter.value.id));
-
-const showSidebar = computed(() => {
-  return id && id.value;
-});
+const showSidebar = computed(() => id && id.value && id.value.length > 0);
 
 const loadTheme = () => {
   const theme = themeConfig.theme || '';

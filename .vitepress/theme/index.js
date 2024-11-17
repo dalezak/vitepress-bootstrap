@@ -2,11 +2,11 @@ import 'bootstrap-icons/font/bootstrap-icons.scss'
 import './index.scss'
 
 import VLazyImage from "v-lazy-image";
-import Layout from './../components/layout.vue';
+import DefaultLayout from '../components/default-layout.vue';
 
 /** @type {import('vitepress').Theme} */
 export default {
-  Layout,
+  DefaultLayout,
   enhanceApp({ app }) {
     loadComponents(app);
   }
