@@ -6,7 +6,7 @@ import DefaultLayout from '../components/default-layout.vue';
 
 /** @type {import('vitepress').Theme} */
 export default {
-  DefaultLayout,
+  Layout: DefaultLayout,
   enhanceApp({ app }) {
     loadComponents(app);
   }
