@@ -2,7 +2,7 @@ import 'bootstrap-icons/font/bootstrap-icons.scss'
 import './index.scss'
 
 import VLazyImage from "v-lazy-image";
-import Layout from '../components/layout.vue';
+import Layout from './../components/layout.vue';
 
 /** @type {import('vitepress').Theme} */
 export default {
