@@ -6,6 +6,7 @@ import themeVariables from './utils/theme-variables.js';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  base: "/vitepress-bootstrap",
   cleanUrls: true,
   title: "Vitepress",
   description: "Vitepress Bootstrap Theme",
