@@ -4,7 +4,7 @@
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb" v-if="breadcrumbs && breadcrumbs.length > 0">
           <li class="breadcrumb-item" v-for="breadcrumb of breadcrumbs" :key="breadcrumb.name">
-            <a :href="breadcrumb.url">{{ breadcrumb.name }}</a>
+            <hyperlink :href="breadcrumb.url" :title="breadcrumb.name">{{ breadcrumb.name }}</hyperlink>
           </li>
         </ol>
       </nav>
@@ -14,25 +14,28 @@
 
 <script setup>
 import { computed } from 'vue';
-import { useData, useRoute } from 'vitepress';
+import { useData, useRoute, withBase } from 'vitepress';
 
 const route = useRoute();
 const { site, frontmatter } = useData();
 
 const title = computed(() => frontmatter.value.title);
 const links = site.value.themeConfig.links || [];
-const showBreadcrumbs = computed(() => route.path != '/' && site.value.themeConfig.breadcrumbs == 'visible');
+// const showBreadcrumbs = computed(() => route.path != '/' && site.value.themeConfig.breadcrumbs == 'visible');
+const showBreadcrumbs = false;
 
 const breadcrumbs = computed(() => {
-  return route.path.split('/').map((item) => {
-    if (item == '') {
-      return { name: 'Home', url: '/' };
+  console.log("path", route.path, "base", withBase(route.path), "breadcrumbs", route.path.split('/'), "withBase", withBase('/'));
+  return route.path.split('/').filter(Boolean).map((item) => {
+    console.log("item", item);
+    if (item == withBase('')) {
+      return { name: 'Home', url: withBase('/') };
     }
     const link = links.find(link => ['/' + item, item, '/' + item + '/'].includes(link.url));
     if (link) {
-      return { name: link.name, url: link.url };
+      return { name: link.name, url: withBase(link.url) };
     }
-    return { name: title, url: route.path };
+    return { name: title, url: withBase(route.path) };
   });
 });
 </script>

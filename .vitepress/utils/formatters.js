@@ -1,3 +1,11 @@
+export function isEmpty(value) {
+  return (value == null || (typeof value === "string" && value.trim().length === 0));
+}
+
+export function isPresent(value) {
+  return value != null && value.trim().length > 0;
+}
+
 export function formatString(string) {
   if (string && string.length > 0) {
     return string;

@@ -5,7 +5,7 @@
       <li class="list-group-item" v-if="item">{{ item }}</li>
       <li class="list-group-item" :key="item" v-for="item in items">{{ item }}</li>
       <li class="list-group-item" :key="key" v-for="(value, key) in links">
-        <a :title="key" :href="value">{{ key }}</a>
+        <hyperlink :href="value" :title="key">{{ key }}</hyperlink>
       </li>
     </ul>
   </div>

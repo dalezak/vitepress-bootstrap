@@ -4,8 +4,10 @@
       <h1 class="display-3" v-if="title && title.length > 0">{{ title }}</h1>
       <p class="lead" v-if="subtitle && subtitle.length > 0">{{ subtitle }}</p>
       <p v-if="description && description.length > 0">{{ description }}</p>
-      <a class="btn btn-outline-primary" :href="primaryUrl" :target="linkTarget(primaryUrl)" role="button" v-if="primaryUrl && primaryText">{{ primaryText }}</a>
-      <a class="btn btn-outline-secondary ms-3" :href="secondaryUrl" :target="linkTarget(secondaryUrl)" role="button" v-if="secondaryUrl && secondaryText">{{ secondaryText }}</a>
+      <p v-if="hasPrimary || hasSecondary">
+        <hyperlink :href="primaryUrl" :title="primaryText" class="btn btn-primary" v-if="hasPrimary">{{ primaryText }}</hyperlink>
+        <hyperlink :href="secondaryUrl" :title="secondaryText" class="btn btn-secondary ms-3" v-if="hasSecondary">{{ secondaryText }}</hyperlink>
+      </p>
     </div>
   </div>
 </template>
@@ -41,8 +43,6 @@ const props = defineProps({
     default: null
   }
 });
-
-const linkTarget = (link) => {
-  return link.startsWith('http') ? '_blank' : '_self';
-}
+const hasPrimary = props.primaryUrl && props.primaryUrl.length > 0 && props.primaryText && props.primaryText.length > 0;
+const hasSecondary = props.secondaryUrl && props.secondaryUrl.length > 0 && props.secondaryText && props.secondaryText.length > 0;
 </script>

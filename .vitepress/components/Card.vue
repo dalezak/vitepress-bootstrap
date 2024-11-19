@@ -1,28 +1,25 @@
 <template>
   <div class="card mb-4">
     <template v-if="image && image.length > 0">
-      <a :href="url" :title="title" target="_blank" v-if="url && url.length > 0 && url.startsWith('http')">
+      <link :href="url" :title="title" v-if="url && url.length > 0">
         <img :src="image" class="card-img-top" alt="image"/>
-      </a>
-      <a :href="url" :title="title" v-else-if="url && url.length > 0">
-        <img :src="image" class="card-img-top" alt="image"/>
-      </a>
-      <img :src="image" class="card-img-top" alt="image" v-else>
+      </link>
+      <img :src="image" class="card-img-top" alt="image" v-if="url == ''">
     </template>
     <div class="card-body">
       <h5 class="card-title" v-if="title && title.length > 0">
-        <a :href="url" target="_blank" v-if="url && url.length > 0 && url.startsWith('http')">{{ title }}</a>
-        <a :href="url" v-else-if="url && url.length > 0">{{ title }}</a>
+        <hyperlink :href="url" :title="title" v-if="url && url.length > 0">{{ title }}</hyperlink> 
+        <hyperlink :href="link" :title="title" v-else-if="link && link.length > 0">{{ title }}</hyperlink> 
         <span v-else>{{ title }}</span>
       </h5>
       <h6 class="card-subtitle mb-2 text-body-secondary" v-if="subtitle && subtitle.length > 0">
-        <a :href="link" target="_blank" v-if="link && link.length > 0 && link.startsWith('http')">{{ subtitle }}</a>
-        <a :href="url" v-else-if="url && url.length > 0">{{ subtitle }}</a>
+        <hyperlink :href="url" :title="title" v-if="url && url.length > 0">{{ subtitle }}</hyperlink> 
+        <hyperlink :href="link" :title="title" v-else-if="link && link.length > 0">{{ subtitle }}</hyperlink> 
         <span v-else>{{ subtitle }}</span>
       </h6>
       <h6 class="card-subtitle mb-2 text-body-secondary" v-if="date && date.length > 0">
-        <a :href="link" target="_blank" v-if="link && link.length > 0 && link.startsWith('http')">{{ formatDate(date) }}</a>
-        <a :href="url" v-else-if="url && url.length > 0">{{ formatDate(date) }}</a>
+        <hyperlink :href="url" :title="title" v-if="url && url.length > 0">{{ formatDate(date) }}</hyperlink> 
+        <hyperlink :href="link" :title="title" v-else-if="link && link.length > 0">{{ formatDate(date) }}</hyperlink> 
         <span v-else>{{ formatDate(date) }}</span>
       </h6>
       <p class="card-text">
