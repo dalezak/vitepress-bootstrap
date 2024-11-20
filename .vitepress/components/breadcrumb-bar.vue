@@ -14,28 +14,27 @@
 
 <script setup>
 import { computed } from 'vue';
-import { useData, useRoute, withBase } from 'vitepress';
+import { useData, useRoute } from 'vitepress';
 
 const route = useRoute();
 const { site, frontmatter } = useData();
 
-const title = computed(() => frontmatter.value.title);
+const base = site.value.base;
 const links = site.value.themeConfig.links || [];
-// const showBreadcrumbs = computed(() => route.path != '/' && site.value.themeConfig.breadcrumbs == 'visible');
-const showBreadcrumbs = false;
+const title = computed(() => frontmatter.value.title);
+const showBreadcrumbs = computed(() => route.path != base && site.value.themeConfig.breadcrumbs == 'visible');
 
 const breadcrumbs = computed(() => {
-  console.log("path", route.path, "base", withBase(route.path), "breadcrumbs", route.path.split('/'), "withBase", withBase('/'));
-  return route.path.split('/').filter(Boolean).map((item) => {
-    console.log("item", item);
-    if (item == withBase('')) {
-      return { name: 'Home', url: withBase('/') };
+  const path = route.path.replace(base, '/');
+  return path.split('/').map((item) => {
+    if (item == "") {
+      return { name: 'Home', url: "/" };
     }
-    const link = links.find(link => ['/' + item, item, '/' + item + '/'].includes(link.url));
+    const link = links.find(link => [item, '/' + item, '/' + item + '/'].includes(link.url));
     if (link) {
-      return { name: link.name, url: withBase(link.url) };
+      return { name: link.name, url: link.url };
     }
-    return { name: title, url: withBase(route.path) };
+    return { name: title.value, url: path };
   });
 });
 </script>
