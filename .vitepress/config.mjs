@@ -16,8 +16,9 @@ export default defineConfig({
     font: 'Roboto', // Open Sans, Roboto, Lato, Ubuntu, Droid Sans, Merriweather, Inconsolata, Oswald, Raleway, Source Sans Pro, Montserrat, Poppins, Playfair Display, Nunito, Quicksand, Pacifico, Lobster, Lora, Merriweather Sans, Roboto Condensed, Roboto Slab, Ubuntu Mono, Vollkorn, Work Sans, Yantramanav, Zilla Slab, Zilla Slab Highlight
     navbar: 'top', // top, fixed-top, fixed-bottom, sticky-top, sticky-bottom
     container: 'container', // container, container-fluid
+    sidebar: 'visible', // hidden, visible
     search: 'visible', // hidden, visible
-    breadcrumbs: 'visible', // hidden, visible
+    breadcrumbs: 'hidden', // hidden, visible
     variables: { // https://github.com/twbs/bootstrap/blob/main/scss/_variables.scss
       'primary': '#dc3545',
       'secondary': '#6c757d',
