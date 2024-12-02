@@ -17,12 +17,12 @@ export default function(config, frontmatter, assets) {
     for (let feed of config.feeds) {
       if (feed.rss && feed.rss.length > 0) {
         let title = `${feed.name} RSS Feed`;
-        let href = `${config.website}/${feed.rss}`;
+        let href = `${feed.rss}`;
         head.push(['link', { rel: 'alternate', type: 'application/rss+xml', title: title, href: href }])
       }
       if (feed.atom && feed.atom.length > 0) {
         let title = `${feed.name} Atom Feed`;
-        let href = `${config.website}/${feed.atom}`;
+        let href = `${feed.atom}`;
         head.push(['link', { rel: 'alternate', type: 'application/atom+xml', title: title, href: href }])
       }
     }

@@ -8,6 +8,7 @@ export default async function(config, feedItem) {
 
   const items = await (await import(feedItem.loader)).default.load();
 
+  const base = config.base;
   const folder = config.outDir;
   const title = config.site.title;
   const author = config.userConfig.author;
@@ -17,10 +18,10 @@ export default async function(config, feedItem) {
 
   const feedLinks = [];
   if (feedItem.rss && feedItem.rss.length > 0) {
-    feedLinks.push(`${website}/${feedItem}.rss`);
+    feedLinks.push(`${website}/${base}/${feedItem.rss}`);
   }
   if (feedItem.atom && feedItem.atom.length > 0) {
-    feedLinks.push(`${website}/${feedItem}.atom`);
+    feedLinks.push(`${website}/${base}/${feedItem.atom}`);
   }
 
   const feed = new Feed({
