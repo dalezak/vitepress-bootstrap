@@ -10,6 +10,7 @@ export default defineConfig({
   cleanUrls: true,
   title: "Vitepress",
   description: "Vitepress Bootstrap Theme",
+  website: "https://dalezak.github.io",
   themeConfig: {
     layout: 'default', // default
     theme: 'light', // light, dark
@@ -47,7 +48,7 @@ export default defineConfig({
       { name: "Code", url: "https://github.com/dalezak/vitepress-bootstrap", icon: "bi-code-square" }
     ],
     feeds: [
-      { name: "features", path: "./loaders/features.data.js" }
+      { name: "Features", loader: "./loaders/features.data.js", rss: "/features.rss", atom: "/features.atom" }
     ],
     networks: [
       { name: 'GitHub', url: 'https://github.com', icon: 'github' },
@@ -72,8 +73,7 @@ export default defineConfig({
     const themeConfig = siteConfig.userConfig.themeConfig;
     if (themeConfig.feeds) {
       themeConfig.feeds.forEach(async (feed) => {
-        const data = await (await import(feed.path)).default.load();
-        await feedGenerator(siteConfig, feed.name, data);
+        await feedGenerator(siteConfig, feed);
       });
     }
   }

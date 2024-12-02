@@ -1,14 +1,14 @@
 <template>
-  <div class="dropdown">
+  <div class="dropdown ms-2" v-if="hasRss || hasAtom">
     <button class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="true" type="button" aria-expanded="false" @click="showDropdown">
       <i class="bi bi-rss"></i>
     </button>
-    <ul class="dropdown-menu">
-      <li v-if="rss && rss.length > 0">
-        <a class="dropdown-item" title="RSS Feed" :href="rss" target="_blank" @click="hideDropdown">RSS</a>
+    <ul class="dropdown-menu dropdown-menu-end">
+      <li v-if="hasRss">
+        <a class="dropdown-item" title="RSS Feed" :href="withBase(rss)" target="_blank" @click="hideDropdown">RSS</a>
       </li>
-      <li v-if="atom && atom.length > 0">
-        <a class="dropdown-item" title="Atom Feed" :href="atom" target="_blank" @click="hideDropdown">Atom</a>
+      <li v-if="hasAtom">
+        <a class="dropdown-item" title="Atom Feed" :href="withBase(atom)" target="_blank" @click="hideDropdown">Atom</a>
       </li>
     </ul>
   </div>
@@ -16,17 +16,15 @@
 
 <script setup>
 import { reactive, onUnmounted } from 'vue';
+import { useData, withBase } from 'vitepress'
 
-const props = defineProps({
-  rss: {
-    type: String,
-    default: ""
-  },
-  atom: {
-    type: String,
-    default: ""
-  }
-});
+const { frontmatter } = useData();
+
+const rss = frontmatter.value.rss;
+const atom = frontmatter.value.atom;
+
+const hasRss = rss && rss.length > 0;
+const hasAtom = atom && atom.length > 0;
 
 const state = reactive({
   dropdown: null
@@ -47,7 +45,6 @@ const hideDropdown = () => {
     state.dropdown.hide();
   }
 };
-
 
 onUnmounted(() => {
   if (state.dropdown) {

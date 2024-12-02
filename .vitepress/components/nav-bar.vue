@@ -16,6 +16,7 @@
       </ul>
       <div class="d-flex">
         <search-bar />
+        <feed-button />
       </div>
     </div>
   </div>
