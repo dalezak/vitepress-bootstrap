@@ -14,17 +14,16 @@ export default function(config, frontmatter, assets) {
     head.push(['meta', { name: 'keywords', content: frontmatter.keywords }])
   }
   if (config.feeds && config.feeds.length > 0) {
-    console.log("headTransformer", config.feeds);
     for (let feed of config.feeds) {
       if (feed.rss && feed.rss.length > 0) {
-        const rssTitle = `${feed.name} RSS Feed`;
-        const rssHref = `${config.website}/${feed.rss}`;
-        head.push(['link', { rel: 'alternate', type: 'application/rss+xml', title: rssTitle, href: rssHref }])
+        let title = `${feed.name} RSS Feed`;
+        let href = `${config.website}/${feed.rss}`;
+        head.push(['link', { rel: 'alternate', type: 'application/rss+xml', title: title, href: href }])
       }
       if (feed.atom && feed.atom.length > 0) {
-        const atomTitle = `${feed.name} Atom Feed`;
-        const atomHref = `${config.website}/${feed.atom}`;
-        head.push(['link', { rel: 'alternate', type: 'application/atom+xml', title: atomTitle, href: atomHref }])
+        let title = `${feed.name} Atom Feed`;
+        let href = `${config.website}/${feed.atom}`;
+        head.push(['link', { rel: 'alternate', type: 'application/atom+xml', title: title, href: href }])
       }
     }
   }
