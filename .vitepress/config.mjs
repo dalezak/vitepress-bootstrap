@@ -60,17 +60,18 @@ export default defineConfig({
     ]
   },
   transformHead: ({ siteConfig, pageData }) => {
-    const themeConfig = siteConfig.userConfig.themeConfig;
     const frontmatter = pageData.frontmatter;
-    return headTransformer(themeConfig, frontmatter);
+    return headTransformer(siteConfig, frontmatter);
   },
   async transformHtml(code, id, context) {
     const siteConfig = context.siteConfig;
-    const themeConfig = siteConfig.userConfig.themeConfig;
+    const userConfig = siteConfig.userConfig;
+    const themeConfig = userConfig.themeConfig;
     await themeVariables(id, siteConfig.themeDir, themeConfig.variables);
   },
   buildEnd: async (siteConfig) => {
-    const themeConfig = siteConfig.userConfig.themeConfig;
+    const userConfig = siteConfig.userConfig;
+    const themeConfig = userConfig.themeConfig;
     if (themeConfig.feeds) {
       themeConfig.feeds.forEach(async (feed) => {
         await feedGenerator(siteConfig, feed);

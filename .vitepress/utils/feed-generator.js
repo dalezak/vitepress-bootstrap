@@ -1,27 +1,30 @@
 import { Feed } from 'feed';
 import { writeFileSync } from 'fs';
 
-export default async function(config, feedItem) {
+export default async function(siteConfig, feedItem) {
   if (!feedItem.loader) {
     return;
   }
 
-  const items = await (await import(feedItem.loader)).default.load();
-
-  const base = config.base;
-  const folder = config.outDir;
-  const title = config.site.title;
-  const author = config.userConfig.author;
-  const website = config.userConfig.website;
-  const description = config.site.description;
+  const loader = feedItem.loader;
+  const userConfig = siteConfig.userConfig;
+  const base = siteConfig.base;
+  const folder = siteConfig.outDir;
+  const title = siteConfig.site.title;
+  const description = siteConfig.site.description;
+  const author = userConfig.author;
+  const website = userConfig.website;
   const copyright = `Copyright (c) 2024-present, ${author}`;
+  const items = await (await import(loader)).default.load();
 
   const feedLinks = [];
   if (feedItem.rss && feedItem.rss.length > 0) {
-    feedLinks.push(`${website}/${base}/${feedItem.rss}`);
+    let href = [base, feedItem.rss].join("/").replace("//", "/");
+    feedLinks.push(href);
   }
   if (feedItem.atom && feedItem.atom.length > 0) {
-    feedLinks.push(`${website}/${base}/${feedItem.atom}`);
+    let href = [base, feedItem.atom].join("/").replace("//", "/");
+    feedLinks.push(href);
   }
 
   const feed = new Feed({
@@ -33,6 +36,7 @@ export default async function(config, feedItem) {
     copyright: copyright
   });
 
+  
   for (let item of items) {
     let link = item.url && item.url.length > 0 && item.url.startsWith("http") == false ? `${website}${item.url}` : item.url;
     feed.addItem({
@@ -47,12 +51,14 @@ export default async function(config, feedItem) {
   }
 
   if (feedItem.rss && feedItem.rss.length > 0) {
-    writeFileSync(`${folder}/${feedItem.rss}`, feed.rss2());
-    console.log(`Generated RSS: ${folder}/${feedItem.rss}`);
+    let path = [folder, feedItem.rss].join("/").replace("//", "/");
+    writeFileSync(path, feed.rss2());
+    console.log("Generated RSS", path);
   }
 
   if (feedItem.atom && feedItem.atom.length > 0) {
-    writeFileSync(`${folder}/${feedItem.atom}`, feed.atom1());
-    console.log(`Generated Atom: ${folder}/${feedItem.atom}`);
+    let path = [folder, feedItem.atom].join("/").replace("//", "/");
+    writeFileSync(path, feed.atom1());
+    console.log("Generated Atom", path);
   }
 }

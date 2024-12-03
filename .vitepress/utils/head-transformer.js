@@ -1,4 +1,8 @@
-export default function(config, frontmatter, assets) {
+export default function(siteConfig, frontmatter) {
+  const userConfig = siteConfig.userConfig;
+  const themeConfig = userConfig.themeConfig;
+  const base = userConfig.base;
+  const feeds = themeConfig.feeds;
   const head = [];
   if (frontmatter.title && frontmatter.title.length > 0) {
     head.push(['meta', { property: 'og:title', content: frontmatter.title }])
@@ -13,16 +17,16 @@ export default function(config, frontmatter, assets) {
   if (frontmatter.keywords && frontmatter.keywords.length > 0) { 
     head.push(['meta', { name: 'keywords', content: frontmatter.keywords }])
   }
-  if (config.feeds && config.feeds.length > 0) {
-    for (let feed of config.feeds) {
+  if (feeds && feeds.length > 0) {
+    for (let feed of feeds) {
       if (feed.rss && feed.rss.length > 0) {
         let title = `${feed.name} RSS Feed`;
-        let href = `${feed.rss}`;
+        let href = [base, feed.atom].join("/").replace("//", "/");
         head.push(['link', { rel: 'alternate', type: 'application/rss+xml', title: title, href: href }])
       }
       if (feed.atom && feed.atom.length > 0) {
         let title = `${feed.name} Atom Feed`;
-        let href = `${feed.atom}`;
+        let href = [base, feed.atom].join("/").replace("//", "/");
         head.push(['link', { rel: 'alternate', type: 'application/atom+xml', title: title, href: href }])
       }
     }
