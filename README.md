@@ -6,7 +6,7 @@ Customizable turn key starter theme with responsive layout, dark mode, video pla
 
 ---
 
-### Frontmatter
+## Frontmatter
 
 Easily write content for your pages using YAML [frontmatter](https://vitepress.dev/guide/frontmatter) in your markdown.
 
@@ -27,7 +27,7 @@ Easily write content for your pages using YAML [frontmatter](https://vitepress.d
 
 ---
 
-### Configuration
+## Configuration
 
 Easily custom your site configuration by editing options in [.vitepress/config.mjs](https://github.com/dalezak/vitepress-bootstrap/blob/main/.vitepress/config.mjs).
 
@@ -52,13 +52,13 @@ Easily custom your site configuration by editing options in [.vitepress/config.m
 
 ---
 
-### Theme
+## Theme
 
 The theme is built using [Bootstrap](https://getbootstrap.com), you can override the default styling by editing any of the stylesheets in [.vitepress/theme](https://github.com/dalezak/vitepress-bootstrap/blob/main/.vitepress/theme).
 
 ---
 
-### Start
+## Start
 
 Getting started is easy, simply follow the steps:
 
@@ -70,13 +70,13 @@ You can follow the [features](https://github.com/dalezak/vitepress-bootstrap/fea
 
 ---
 
-### Dev
+## Dev
 
 ```shell
 npm run dev
 ```
 
-### Build
+## Build
 
 ```shell
 npm run build
