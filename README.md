@@ -4,7 +4,6 @@ Static site generator using markdown for content built with Vitepress and Bootst
 
 Customizable turn key starter theme with responsive layout, dark mode, video player, photo gallery, and more
 
----
 
 ## Frontmatter
 
@@ -25,7 +24,6 @@ Easily write content for your pages using YAML [frontmatter](https://vitepress.d
 - **isbn** - book ISBN number
 - **description** - page description
 
----
 
 ## Configuration
 
@@ -50,13 +48,11 @@ Easily custom your site configuration by editing options in [.vitepress/config.m
 - **themeConfig.feeds** - rss and atom feeds
 - **themeConfig.networks** - social network links
 
----
 
 ## Theme
 
 The theme is built using [Bootstrap](https://getbootstrap.com), you can override the default styling by editing any of the stylesheets in [.vitepress/theme](https://github.com/dalezak/vitepress-bootstrap/blob/main/.vitepress/theme).
 
----
 
 ## Start
 
@@ -68,7 +64,6 @@ Getting started is easy, simply follow the steps:
 
 You can follow the [features](https://github.com/dalezak/vitepress-bootstrap/features) for examples using different components like video player or image gallery.
 
----
 
 ## Dev
 
