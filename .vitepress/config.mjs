@@ -11,6 +11,7 @@ export default defineConfig({
   title: "Vitepress",
   description: "Vitepress Bootstrap Theme",
   themeConfig: {
+    author: "Dale Zak",
     website: "https://dalezak.github.io",
     layout: 'default', // default
     theme: 'light', // light, dark
@@ -51,12 +52,12 @@ export default defineConfig({
       { name: "Features", loader: "./loaders/features.data.js", rss: "/features.rss", atom: "/features.atom" }
     ],
     networks: [
-      { name: 'GitHub', url: 'https://github.com', icon: 'github' },
-      { name: 'LinkedIn', url: 'https://www.linkedin.com', icon: 'linkedin' },
-      { name: 'Twitter',  url: 'https://twitter.com', icon: 'twitter' },
-      { name: "Facebook", url: 'https://www.facebook.com', icon: 'facebook' },
-      { name: 'YouTube', url: 'https://www.youtube.com', icon: 'youtube' },
-      { name: 'Instagram', url: 'https://www.instagram.com', icon: 'instagram' }
+      { name: 'GitHub', url: 'https://github.com/dalezak', icon: 'github' },
+      { name: 'LinkedIn', url: 'https://www.linkedin.com/in/dalezak', icon: 'linkedin' },
+      { name: 'Twitter',  url: 'https://x.com/dalezak', icon: 'twitter' },
+      { name: "Facebook", url: 'https://www.facebook.com/dalezak', icon: 'facebook' },
+      { name: 'YouTube', url: 'https://www.youtube.com/dalezak', icon: 'youtube' },
+      { name: 'Instagram', url: 'https://www.instagram.com/dalezak', icon: 'instagram' }
     ]
   },
   transformHead: ({ siteConfig, pageData }) => {
