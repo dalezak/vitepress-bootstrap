@@ -6,7 +6,7 @@ description: Vitepress Bootstrap Starter Project
 <jumbotron 
   title="Vitepress Bootstrap"
   subtitle="Static site generator using markdown for content built with Vitepress and Bootstrap"
-  description="Customizable turn key starter theme with responsive layout, dark mode, video player, photo gallery, and more"
+  description="Customizable starter theme with responsive layout, dark mode, video player, photo gallery, and more"
   primaryText="See Features"
   primaryUrl="/features"
   secondaryText="Source Code"
@@ -61,6 +61,7 @@ Easily custom your site configuration by editing options in [.vitepress/config.m
 - **themeConfig.sidebar** - `visible`, `hidden`
 - **themeConfig.search** - `visible`, `hidden`
 - **themeConfig.breadcrumbs** - `visible`, `hidden`
+- **themeConfig.share** - `visible`, `hidden`
 - **themeConfig.variables** - override any [Bootstrap](https://getbootstrap.com) variables
 - **themeConfig.links** - navbar links
 - **themeConfig.feeds** - rss and atom feeds
@@ -78,11 +79,13 @@ The theme is built using [Bootstrap](https://getbootstrap.com), you can override
 
 Getting started is easy, simply follow the steps:
 
-- fork [dalezak/vitepress-bootstrap](https://github.com/dalezak/vitepress-bootstrap)
-- edit [.vitepress/config.mjs](https://github.com/dalezak/vitepress-bootstrap/blob/main/.vitepress/config.mjs)
-- create your markdown content
+- clone or fork [dalezak/vitepress-bootstrap](https://github.com/dalezak/vitepress-bootstrap)
+- edit [.vitepress/config.mjs](https://github.com/dalezak/vitepress-bootstrap/blob/main/.vitepress/config.mjs) configuration
+- remove [features](https://github.com/dalezak/vitepress-bootstrap/tree/main/features) examples
+- edit [index.md](https://github.com/dalezak/vitepress-bootstrap/blob/main/index.md) page
+- add your markdown content
 
-You can follow the [features](https://github.com/dalezak/vitepress-bootstrap/features) for examples using different components like video player or image gallery.
+You can follow the [features](https://github.com/dalezak/vitepress-bootstrap/features) for examples using different components like video player, image gallery, etc.
 
 ---
 

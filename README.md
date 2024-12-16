@@ -45,6 +45,7 @@ Easily custom your site configuration by editing options in [.vitepress/config.m
 - **themeConfig.sidebar** - `visible`, `hidden`
 - **themeConfig.search** - `visible`, `hidden`
 - **themeConfig.breadcrumbs** - `visible`, `hidden`
+- **themeConfig.share** - `visible`, `hidden`
 - **themeConfig.variables** - override any [Bootstrap](https://getbootstrap.com) variables
 - **themeConfig.links** - navbar links
 - **themeConfig.feeds** - rss and atom feeds

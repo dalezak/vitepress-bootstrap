@@ -1,9 +1,9 @@
 <template>
-  <div class="dropdown">
+  <div class="dropdown ms-2" v-if="showShare">
     <button class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="true" type="button" aria-expanded="false" @click="showDropdown">
       <i class="bi bi-share"></i>
     </button>
-    <ul class="dropdown-menu">
+    <ul class="dropdown-menu dropdown-menu-end">
       <li>
         <a class="dropdown-item" href="#" @click="shareTwitter">Twitter</a>
       </li>
@@ -18,13 +18,18 @@
 </template>
 
 <script setup>
-import { reactive, onUnmounted } from 'vue';
+import { reactive, computed, onUnmounted } from 'vue';
 import { useData } from 'vitepress';
-const { frontmatter } = useData();
+
+const { site, frontmatter } = useData();
+
 const url = (window !== undefined) ? window.location.href : "";
+const id = frontmatter.value.id || "";
 const title = frontmatter.value.title || "";
 const description = frontmatter.value.description || "";
 const hashtags = frontmatter.value.keywords ? frontmatter.value.keywords.split(",").map((keyword) => `#${keyword.trim()}`) : [];
+
+const showShare = computed(() => id.length > 0 && site.value.themeConfig.share == 'visible');
 
 const state = reactive({
   dropdown: null

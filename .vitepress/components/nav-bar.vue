@@ -17,6 +17,7 @@
       <div class="d-flex">
         <search-bar />
         <feed-button />
+        <share-button />
       </div>
     </div>
   </div>

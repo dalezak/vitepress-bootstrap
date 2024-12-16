@@ -20,10 +20,11 @@ export default defineConfig({
     container: 'container', // container, container-fluid
     sidebar: 'visible', // hidden, visible
     search: 'visible', // hidden, visible
-    breadcrumbs: 'hidden', // hidden, visible
+    breadcrumbs: 'visible', // hidden, visible,
+    share: 'visible', // hidden, visible
     variables: { // https://github.com/twbs/bootstrap/blob/main/scss/_variables.scss
-      'primary': '#dc3545',
-      'secondary': '#6c757d',
+      'primary': '#135D66',
+      'secondary': '#77B0AA',
       'success': '#198754',
       'danger': '#dc3545',
       'warning': '#ffc107',
@@ -43,6 +44,7 @@ export default defineConfig({
       'card-border-color': '#e6e6e6',
       'card-dark-bg': '#212529',
       'card-dark-border-color': '#343a40',
+      'code-color': '#003C43',
     },
     links: [
       { name: "Features", url: "/features", icon: "bi-check-square" },
