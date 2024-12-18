@@ -29,7 +29,8 @@ const title = frontmatter.value.title || "";
 const description = frontmatter.value.description || "";
 const hashtags = frontmatter.value.keywords ? frontmatter.value.keywords.split(",").map((keyword) => `#${keyword.trim()}`) : [];
 
-const showShare = computed(() => id.length > 0 && site.value.themeConfig.share == 'visible');
+const showShare = true;
+//computed(() => id.length > 0 && site.value.themeConfig.share == 'visible');
 
 const state = reactive({
   dropdown: null

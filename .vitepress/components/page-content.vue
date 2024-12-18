@@ -1,5 +1,6 @@
 <template>
   <div class="mb-4" v-if="id && id.length > 0">
+    <share-button class="float-end" v-if="showShare" />
     <h1 v-if="title">{{ title }}</h1>
     <h5 v-if="subtitle">{{ subtitle }}</h5>
   </div>
@@ -26,7 +27,7 @@ import { computed } from 'vue';
 import { useData } from 'vitepress';
 import { formatString, formatArray } from '../utils/formatters';
 
-const { frontmatter } = useData();
+const { site, frontmatter } = useData();
 
 const id = computed(() => formatString(frontmatter.value.id));
 const title = computed(() => formatString(frontmatter.value.title));
@@ -36,4 +37,5 @@ const audio = computed(() => formatString(frontmatter.value.audio));
 const link = computed(() => formatString(frontmatter.value.link));
 const links = computed(() => formatArray(frontmatter.value.links));
 const images = computed(() => formatArray(frontmatter.value.images));
+const showShare = computed(() => site.value.themeConfig.share == 'visible');
 </script>

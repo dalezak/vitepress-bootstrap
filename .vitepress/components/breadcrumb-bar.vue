@@ -1,8 +1,8 @@
 <template>
   <div class="card breadcrumbs my-4" v-if="showBreadcrumbs">
     <div class="card-body">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb" v-if="breadcrumbs && breadcrumbs.length > 0">
+      <nav aria-label="breadcrumb me-auto">
+        <ol class="breadcrumb me-auto" v-if="breadcrumbs && breadcrumbs.length > 0">
           <li class="breadcrumb-item" v-for="breadcrumb of breadcrumbs" :key="breadcrumb.name">
             <hyperlink :href="breadcrumb.url" :title="breadcrumb.name">{{ breadcrumb.name }}</hyperlink>
           </li>
@@ -22,6 +22,7 @@ const { site, frontmatter } = useData();
 const base = site.value.base;
 const links = site.value.themeConfig.links || [];
 const title = computed(() => frontmatter.value.title);
+
 const showBreadcrumbs = computed(() => route.path != base && site.value.themeConfig.breadcrumbs == 'visible');
 
 const breadcrumbs = computed(() => {
