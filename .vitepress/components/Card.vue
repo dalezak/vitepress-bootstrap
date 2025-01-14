@@ -1,10 +1,10 @@
 <template>
   <div class="card mb-4">
     <template v-if="image && image.length > 0">
-      <link :href="url" :title="title" v-if="url && url.length > 0">
+      <hyperlink :href="url" :title="title" v-if="url && url.length > 0">
         <img :src="image" class="card-img-top" alt="image"/>
-      </link>
-      <img :src="image" class="card-img-top" alt="image" v-if="url == ''">
+      </hyperlink>
+      <img :src="image" class="card-img-top" alt="image" v-else>
     </template>
     <div class="card-body">
       <h5 class="card-title" v-if="title && title.length > 0">

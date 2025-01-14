@@ -40,8 +40,9 @@ Easily custom your site configuration by editing options in [.vitepress/config.m
 - **themeConfig.layout** - `default`
 - **themeConfig.theme** - `light`, `dark`
 - **themeConfig.font** - any font family from [Google Fonts](https://fonts.google.com)
-- **themeConfig.navbar** - `top`, `fixed-top`, `fixed-bottom`, `sticky-top`, `sticky-bottom`
 - **themeConfig.container** - `container`, `container-fluid`
+- **themeConfig.navbar** - `top`, `fixed-top`, `fixed-bottom`, `sticky-top`, `sticky-bottom`
+- **themeConfig.footer** - `visible`, `hidden`
 - **themeConfig.sidebar** - `visible`, `hidden`
 - **themeConfig.search** - `visible`, `hidden`
 - **themeConfig.breadcrumbs** - `visible`, `hidden`

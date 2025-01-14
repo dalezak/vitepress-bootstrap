@@ -7,16 +7,16 @@
   <div class="my-4">
     <content />
   </div>
-  <div class="my-5" v-if="video && video.length > 0">
+  <div class="my-4" v-if="video && video.length > 0">
     <video-player :video="video" />
   </div>
-  <div class="my-5" v-if="audio && audio.length > 0">
+  <div class="my-4" v-if="audio && audio.length > 0">
     <audio-player :audio="audio" />
   </div>
-  <div class="my-5" v-if="images && images.length > 0">
+  <div class="my-4" v-if="images && images.length > 0">
     <image-gallery :images="images" />  
   </div>
-  <div class="my-5" v-if="link || links">
+  <div class="my-4" v-if="link || links">
     <link-button :url="link" v-if="link" />
     <link-button :url="link" :key="'link-' + index" v-for="(link, index) of links" />
   </div>

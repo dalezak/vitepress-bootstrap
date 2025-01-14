@@ -17,6 +17,7 @@ export default defineConfig({
     theme: 'light', // light, dark
     font: 'Roboto', // Open Sans, Roboto, Lato, Ubuntu, Droid Sans, Merriweather, Inconsolata, Oswald, Raleway, Source Sans Pro, Montserrat, Poppins, Playfair Display, Nunito, Quicksand, Pacifico, Lobster, Lora, Merriweather Sans, Roboto Condensed, Roboto Slab, Ubuntu Mono, Vollkorn, Work Sans, Yantramanav, Zilla Slab, Zilla Slab Highlight
     navbar: 'top', // top, fixed-top, fixed-bottom, sticky-top, sticky-bottom
+    footer: 'visible', // hidden, visible
     container: 'container', // container, container-fluid
     sidebar: 'visible', // hidden, visible
     search: 'visible', // hidden, visible

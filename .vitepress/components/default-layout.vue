@@ -14,6 +14,9 @@
         </div>
       </div>
     </div>
+    <div class="mb-4" :class="container" v-if="showFooter">
+      <footer-bar />
+    </div>
   </div>
 </template>
 
@@ -27,8 +30,10 @@ const { site, frontmatter } = useData();
 const themeConfig = site.value.themeConfig || {};
 const container = themeConfig.container || '';
 const sidebar = themeConfig.sidebar || '';
+const footer = themeConfig.footer || '';
 const id = computed(() => formatString(frontmatter.value.id));
 const showSidebar = computed(() => sidebar == 'visible' && id.value && id.value.length > 0);
+const showFooter = computed(() => footer == 'visible');
 
 const loadTheme = () => {
   const theme = themeConfig.theme || '';
