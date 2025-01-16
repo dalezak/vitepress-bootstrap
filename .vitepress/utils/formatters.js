@@ -36,7 +36,7 @@ export function formatTags(string) {
     let tags = {};
     for (let tag of string.split(',')) {
       tag = tag.trim();
-      tags[tag] = `/${path.value}?search=${tag}`;
+      tags[tag] = `/?search=${tag}`;
     }
     return tags;
   }

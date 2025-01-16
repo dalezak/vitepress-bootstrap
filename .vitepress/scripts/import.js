@@ -18,13 +18,18 @@ else {
 async function importBook(isbn) {
   let url = `https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`;
   let data = await fetchJson(url);
-  let item = data.items[0];
-  let volumeInfo = item.volumeInfo;
-  let title = volumeInfo.title;
-  let slug = buildSlug(title);
-  let path = `books/${slug}.md`;
-  let markdown = markdownBook(slug, data);
-  writeFile(path, markdown);
+  if (data && data.items && data.items.length > 0) {
+    let item = data.items[0];
+    let volumeInfo = item.volumeInfo;
+    let title = volumeInfo.title;
+    let slug = buildSlug(title);
+    let path = `books/${slug}.md`;
+    let markdown = markdownBook(slug, data);
+    writeFile(path, markdown);
+  }
+  else {
+    console.error("importBook", "Book isbn not found", isbn);
+  }
 }
 
 async function importGithub(username) {
