@@ -1,5 +1,5 @@
 <template>
-  <div class="card mb-5">
+  <div class="card mb-4">
     <div class="card-header" v-if="title && title.length > 0">{{ title }}</div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item" v-if="item">{{ item }}</li>

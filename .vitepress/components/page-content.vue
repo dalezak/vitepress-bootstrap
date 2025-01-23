@@ -7,6 +7,9 @@
   <div class="my-4">
     <content />
   </div>
+  <div class="my-4" v-if="quotes && quotes.length > 0">
+    <block-quote :text="quote" :key="'quote-' + index" v-for="(quote, index) of quotes" />
+  </div>
   <div class="my-4" v-if="video && video.length > 0">
     <video-player :video="video" />
   </div>
@@ -37,4 +40,5 @@ const audio = computed(() => formatString(frontmatter.value.audio));
 const link = computed(() => formatString(frontmatter.value.link));
 const links = computed(() => formatArray(frontmatter.value.links));
 const images = computed(() => formatArray(frontmatter.value.images));
+const quotes = computed(() => formatArray(frontmatter.value.quotes));
 </script>

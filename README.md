@@ -15,13 +15,13 @@ Easily write content for your pages using YAML [frontmatter](https://vitepress.d
 - **date** - date
 - **year** - year
 - **keywords** - comma separated list of keywords
-- **link** - url to external website
-- **links** - comma separated list of urls
+- **link** - single url
+- **links** - list of urls
 - **image** - single image url
-- **images** - comma separated list of images
-- **audio** - link to MP3 audio file
-- **video** - link to YouTube
-- **repo** - link to Github repo
+- **images** - list of image urls
+- **audio** - url to MP3 audio file
+- **video** - url to YouTube
+- **repo** - url to Github repo
 - **isbn** - book ISBN number
 - **description** - page description
 
@@ -35,7 +35,7 @@ Easily custom your site configuration by editing options in [.vitepress/config.m
 - **description** - site description
 - **cleanUrls** - `true`, `false`
 - **base** - site path, Github Pages is project name, custom domain is `/`
-- **themeConfig.author** - your name
+- **themeConfig.author** - your name or organization
 - **themeConfig.website** - website url
 - **themeConfig.layout** - `default`
 - **themeConfig.theme** - `light`, `dark`

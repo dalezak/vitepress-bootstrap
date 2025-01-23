@@ -22,7 +22,7 @@
         <hyperlink :href="link" :title="title" v-else-if="link && link.length > 0">{{ formatDate(date) }}</hyperlink> 
         <span v-else>{{ formatDate(date) }}</span>
       </h6>
-      <p class="card-text">
+      <p class="card-text" v-if="slots && slots.length > 0">
         <slot></slot>
       </p>
       <div v-if="keywords && keywords.length > 0">
@@ -33,7 +33,8 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
+import { defineProps, useSlots } from 'vue';
+const slots = useSlots();
 const props = defineProps({
   title: {
     type: [String, Number]

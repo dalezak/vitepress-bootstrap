@@ -3,8 +3,10 @@ id: feature-02
 title: External Links
 date:
 keywords: 
-link: https://vitepress.dev
-links: https://vuejs.org
+link:
+links: 
+  - https://vuejs.org
+  - https://vitepress.dev
 image: 
 images: 
 audio:

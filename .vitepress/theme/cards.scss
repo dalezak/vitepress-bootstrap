@@ -5,6 +5,12 @@
   @if variable-exists(card-border-color) {
     border-color: $card-border-color;
   }
+  .card-body:empty {
+    display: none;
+  }
+  .card-text:empty {
+    display: none;
+  }
 }
 
 [data-bs-theme=dark] .card {
