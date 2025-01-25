@@ -8,7 +8,6 @@
         {{ subtitle }}
       </h5>
       <div class="card-text mb-2" v-if="description && description.length > 0">
-        <hr />
         {{ description }}
       </div>
     </div>
