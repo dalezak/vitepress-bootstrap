@@ -15,7 +15,7 @@ export default function(siteConfig, frontmatter) {
     head.push(['meta', { property: 'og:image', content: frontmatter.image }])
   }
   if (frontmatter.keywords && frontmatter.keywords.length > 0) { 
-    head.push(['meta', { name: 'keywords', content: frontmatter.keywords }])
+    head.push(['meta', { name: 'keywords', content: frontmatter.keywords.join(",") }])
   }
   if (feeds && feeds.length > 0) {
     for (let feed of feeds) {

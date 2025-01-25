@@ -47,15 +47,15 @@ export function formatArray(string) {
   if (string == undefined || string == '') {
     return [];
   }
+  else if (Array.isArray(string)) {
+    return string;
+  }
   else if (string.includes(',')) {
     let items = [];
     for (let tag of string.split(',')) {
       items.push(tag.trim());
     }
     return items;
-  }
-  else if (Array.isArray(string)) {
-    return string;
   }
   return [string];
 }
