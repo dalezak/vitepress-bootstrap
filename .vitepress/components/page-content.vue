@@ -1,8 +1,6 @@
 <template>
   <div class="mb-4" v-if="id && id.length > 0">
-    <share-button class="float-end" />
-    <h1 v-if="title">{{ title }}</h1>
-    <h5 v-if="subtitle">{{ subtitle }}</h5>
+    <page-title />
   </div>
   <div class="my-4">
     <content />

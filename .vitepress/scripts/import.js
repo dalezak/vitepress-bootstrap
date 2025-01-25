@@ -57,7 +57,7 @@ function markdownBook(id, data) {
     publisher: volumeInfo.publisher,
     published: volumeInfo.publishedDate,
     pages: volumeInfo.pageCount,
-    keywords: volumeInfo.categories.join(",").toLowerCase(),
+    keywords: volumeInfo.categories,
     image: volumeInfo.imageLinks.thumbnail,
     isbn: volumeInfo.industryIdentifiers[0].identifier,
     preview: volumeInfo.previewLink
